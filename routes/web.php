@@ -17,3 +17,12 @@ Route::get('/', function () {
     broadcast(new WebsocketDemoEvent('somedata'));
     return view('welcome');
 });
+Route::get('/chats','App\Http\Controllers\ChatController@index');
+Route::get('/messages','App\Http\Controllers\ChatController@getMessage');
+Route::post('/sendmessages','App\Http\Controllers\ChatController@sendMessage');
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
