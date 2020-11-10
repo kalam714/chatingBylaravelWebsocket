@@ -24,5 +24,6 @@ Route::post('/sendmessages','App\Http\Controllers\ChatController@sendMessage');
 
 
 Auth::routes();
+Broadcast::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

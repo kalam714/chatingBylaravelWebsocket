@@ -19,10 +19,11 @@ class ChatController extends Controller
         return Chat::with('user')->get();
     }
     public function sendMessage(Request $request){
-       $message= auth()->user()->messages()->create([
-            'message' =>$request->message
+        $message = auth()->user()->messages()->create([
+            'message' => $request->message
         ]);
-        broadcast(new ChatEvent($message->load('user')))->toOthers();
+        broadcast(new MessageSent($message->load('user')))->toOthers();
+
 
         return ['status' =>'success'];
     }
